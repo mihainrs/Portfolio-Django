@@ -1,25 +1,29 @@
 {% extends 'projects/base.html' %}
 
-{% block title %}Projects - Portfolio Mihai{% endblock %}
+{% block title %}
+  Projects - Portfolio Mihai
+{% endblock %}
 
 {% block content %}
-    <h1>My Projects:</h1>
+  <h1>My Projects:</h1>
 
-    {% if user.is_authenticated and user.is_superuser %}
-        <a href="{% url 'add_project' %}"> + Add Project</a>
-    {% endif %}
-    
-    <ul>
-        {% for project in projects %}
-            <li>
-                <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
-                <p>{{ project.description }}</p>
+  {% if user.is_authenticated and user.is_superuser %}
+    <a href="{% url 'add_project' %}">+ Add Project</a>
+  {% endif %}
 
-                {% if user.is_authenticated and user.is_superuser %}
-                    <a href="{% url 'edit_project' project.pk %}">Edit</a>
-                    <a href="{% url 'delete_project' project.pk %}">Delete</a>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+  <ul>
+    {% for project in projects %}
+      <li>
+        <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
+        <p>{{ project.description }}</p>
+        {% if project.image %}
+          <img src="{{ project.image.url }}" alt="{{ project.title }}" style="max-width:200px;"/>
+        {% endif %}
+        {% if user.is_authenticated and user.is_superuser %}
+          <a href="{% url 'edit_project' project.pk %}">Edit</a>
+          <a href="{% url 'delete_project' project.pk %}">Delete</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}

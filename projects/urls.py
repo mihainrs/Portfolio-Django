@@ -16,4 +16,7 @@ urlpatterns = [
     path('projects/<int:pk>/delete/', views.delete_project, name='delete_project'),
     path('about/', views.about_me, name='about_me'),
     path('about-me/edit/<int:pk>/', views.edit_about_me, name='edit_about_me'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

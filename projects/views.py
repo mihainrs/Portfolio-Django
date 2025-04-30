@@ -51,7 +51,7 @@ def add_project(request):
 @login_required
 def edit_project(request, pk):
     project = get_object_or_404(Project, pk=pk)
-    form = ProjectForm(request.POST or None, instance=project)
+    form = ProjectForm(request.POST or None, request.FILES or None, instance=project)
     if request.method == 'POST' and form.is_valid():
         form.save()
         return redirect('projects')
