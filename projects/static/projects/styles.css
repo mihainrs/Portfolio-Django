@@ -1,0 +1,46 @@
+body{
+    font-family: Helvetica, sans-serif;
+    margin:20px;
+    padding:0;
+    background-color: cyan;
+}
+
+h1 {
+    text-align:center;
+    color: #333;
+}
+
+ul{
+    list-style-type:none;
+    padding:0;
+}
+
+li{
+    background-color: #fff;
+    margin: 10px 0;
+    padding:10px;
+    border-radius:5px;
+}
+
+a{
+    color:#333;
+    text-decoration:none;
+}
+
+a:hover {
+    color: #007bff;
+}
+
+nav {
+    margin-bottom:20px;
+}
+
+nav a {
+    text-decoration:none;
+    margin-right:10px;
+    color: #333;
+}
+
+.content{
+    margin-top:16px;
+}

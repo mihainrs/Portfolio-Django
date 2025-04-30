@@ -1,0 +1,14 @@
+{% extends 'projects/base.html' %}
+
+{% block title %}Confirm deletion - {{ project.title }}{% endblock %}
+
+{% block content %}
+    <h2>Would you like to delete "{{ project.title }}"?</h2>
+    <p>Important! This cannot be undone.</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Yay</button>
+        <a href="{% url 'projects' %}">Nay</a>
+    </form>
+{% endblock %}
