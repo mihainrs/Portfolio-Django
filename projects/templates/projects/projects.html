@@ -11,19 +11,30 @@
     <a href="{% url 'add_project' %}">+ Add Project</a>
   {% endif %}
 
-  <ul>
+  <div class="project-grid">
     {% for project in projects %}
-      <li>
-        <a href="{{ project.link }}" target="_blank">{{ project.title }}</a>
-        <p>{{ project.description }}</p>
-        {% if project.image %}
-          <img src="{{ project.image.url }}" alt="{{ project.title }}" style="max-width:200px;"/>
-        {% endif %}
-        {% if user.is_authenticated and user.is_superuser %}
-          <a href="{% url 'edit_project' project.pk %}">Edit</a>
-          <a href="{% url 'delete_project' project.pk %}">Delete</a>
-        {% endif %}
-      </li>
+      <div class="project-card">
+        <div class="project-inner">
+          {% if project.image %}
+            <div class="project-img-wrapper">
+              <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            </div>
+          {% endif %}
+          <div class="project-info">
+            <a href="{{ project.link }}" target="_blank"><h3>{{ project.title }}</h3></a>
+            <p>{{ project.description }}</p>
+  
+            {% if user.is_authenticated and user.is_superuser %}
+              <div class="admin-links">
+                <a href="{% url 'edit_project' project.pk %}">Edit</a>
+                <a href="{% url 'delete_project' project.pk %}">Delete</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
+  
+  
 {% endblock %}

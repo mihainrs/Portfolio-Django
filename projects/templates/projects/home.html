@@ -1,8 +1,15 @@
 {% extends 'projects/base.html' %}
-
+{% load static%}
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Welcome to my Portfolio</h1>
-    <p>This is the homepage!</p>
+<div class="home-container">
+    <h1>Welcome to My Portfolio</h1>
+    <p>Hi, I'm Mihai👋 A backend developer with a passion for all things code!💻</p>
+    <a class="cta-button" href="{% url 'projects' %}">View My Projects</a>
+</div>
+
+
+<img src="{% static 'projects/Laptop_fox.png' %}" alt="Portfolio Image" class="home-image">
+
 {% endblock %}

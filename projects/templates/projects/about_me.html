@@ -3,18 +3,27 @@
 {% block title %}About Me{% endblock %}
 
 {% block content %}
-{% if about_me %}
-<h1>About me!</h1>
-<img src="{{ about_me.photo.url}}" alt="{{ about_me.name }}" style="max-width:200px;">
-<p><strong>Name:</strong> {{ about_me.name }}</p>
-<p><strong>Bio:</strong> {{ about_me.bio }}</p>
-<p><strong>Skills:</strong> {{ about_me.skills }}</p>
-<p><strong>Contact info:</strong> {{ about_me.contact_info }}</p>
-
-{%if user.is_authenticated and user.is_superuser %}<a href="{% url 'edit_about_me' about_me.pk %}">Edit About Me</a>{% endif %}
-
-{%else%}
-<p>Nothing here yet!</p>
-{% endif %}
-
+<div class="about-container">
+    {% if about_me %}
+        <div class="about-header">
+            <div class="about-photo">
+                <img src="{{ about_me.photo.url }}" alt="{{ about_me.name }}">
+            </div>
+            <div class="about-text">
+                <h1>{{ about_me.name }}</h1>
+                <p><strong>Bio:</strong> {{ about_me.bio }}</p>
+                <p><strong>Skills:</strong> {{ about_me.skills }}</p>
+                <p><strong>Contact info:</strong> {{ about_me.contact_info }}</p>
+            </div>
+        </div>
+        
+        <div class="about-footer">
+            {% if user.is_authenticated and user.is_superuser %}
+                <a href="{% url 'edit_about_me' about_me.pk %}" class="edit-btn">Edit About Me</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>Nothing here yet!</p>
+    {% endif %}
+</div>
 {% endblock %}

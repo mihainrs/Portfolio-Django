@@ -5,7 +5,7 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['title', 'description', 'link', 'image']
-    image = forms.ImageField(required=False)
+    
         
 class AboutMeForm(forms.ModelForm):
     class Meta:
