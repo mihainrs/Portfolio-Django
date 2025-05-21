@@ -16,6 +16,7 @@ urlpatterns = [
     path('projects/<int:pk>/delete/', views.delete_project, name='delete_project'),
     path('about/', views.about_me, name='about_me'),
     path('about-me/edit/<int:pk>/', views.edit_about_me, name='edit_about_me'),
+    path('playground/', views.playground, name='playground'),
 ]
 
 if settings.DEBUG:

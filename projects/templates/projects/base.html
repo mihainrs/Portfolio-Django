@@ -26,6 +26,7 @@
                 {% endif %}
                 <a href="{% url 'home' %}" class="nav-btn {% if request.path == '/' %}active{% endif %}">Home</a>
                 <a href="{% url 'projects' %}" class="nav-btn {% if request.path == '/projects/' %}active{% endif %}">Projects</a>
+                <a href="{% url 'playground' %}" class="nav-btn {% if request.path == '/playground/' %}active{% endif %}">Playground</a>
                 <a href="{% url 'about_me' %}" class="nav-btn {% if request.path == '/about/' %}active{% endif %}">About me</a>
             </div>
         </div>

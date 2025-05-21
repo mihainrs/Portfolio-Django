@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Project, AboutMe
+from .models import Project, AboutMe, PlaygroundProjects
 from .forms import ProjectForm, AboutMeForm
 
 #temp proj list (for testing purposes)
@@ -90,3 +90,8 @@ def edit_about_me(request,pk):
     else:
         form=AboutMeForm(instance=about_me)
     return render(request, 'projects/edit_about_me.html',{'form':form})
+
+#playground with random projects:
+def playground(request):
+    playground_projects = PlaygroundProjects.objects.all()
+    return render(request, 'projects/playground.html', {'playground_projects': playground_projects})
